@@ -22,11 +22,11 @@ def setEmailPassword(email, pw):
     password=pw
 
 
-def get_sheet_data(url,sheet_name,first_column,second_column):
+def get_sheet_data(url,sheet_name,first_column,second_column,cred_file):
     global name_list,mail_list
     try:
         scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
-        creds=ServiceAccountCredentials.from_json_keyfile_name("HanEm-API-creds.json", scope)
+        creds=ServiceAccountCredentials.from_json_keyfile_name(cred_file, scope)
         client= gspread.authorize(creds)
     except:
         print("API authentication failed")
